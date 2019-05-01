@@ -56,9 +56,33 @@ public class HGUCoursePatternAnalyzer {
 	private Student[] initiateStudentArrayFromLines(String[] lines) {
 		
 		// TODO: implement this method
+		int length = numOfStudents;
+		int i = 0, j = 0;
+		
+		students = new Student[length];
+		Student duplicateChecker = new Student("null");
+		
+		/*Array initialization*/
+		for(i = 0; i < length; i++) {
+			students[i] = new Student("empty");
+		}
+		
+		for(i = 0; i < lines.length; i++) {
+			if(j > 2)
+			{
+				j--;
+			}
+			
+			duplicateChecker = new Student(lines[i].split(", ")[1]);
+			
+			if(!studentExist(students, duplicateChecker)){
+			students[j] =  new Student(lines[i].split(", ")[1]);
+			j++;
+		}				
+			}
 		
 		
-		return null;
+		return students;
 	}
 
 	/**
@@ -71,6 +95,15 @@ public class HGUCoursePatternAnalyzer {
 		
 		// TODO: implement this method
 
+		int i = 0;
+		int length = students.length;
+		
+		for(i = 0; i < length; i++) {
+
+			if(students[i].getName().equals(student.getName())) {
+				return true;
+				}
+			}
 		return false;
 	}
 	
@@ -82,8 +115,29 @@ public class HGUCoursePatternAnalyzer {
 	private Course[] initiateCourseArrayFromLines(String[] lines) {
 		
 		// TODO: implement this method
+		int length = numOfCourses;
+		int i = 0, j = 0;
 		
-		return null;
+		courses = new Course[length];
+		Course duplicateChecker = new Course("null");
+		
+		/*Array initialization*/
+		for(i = 0; i < length; i++) {
+			courses[i] = new Course("empty");
+		}
+		
+		for(i = 0; i < lines.length; i++) {
+			if(j > 5) {
+				j--;
+			}
+			duplicateChecker = new Course(lines[i].split(", ")[2]);
+			
+			if(!courseExist(courses, duplicateChecker)) {
+			courses[j] = new Course(lines[i].split(", ")[2]);
+				j++;
+			}
+		}
+		return courses;
 	}
 
 	/**
@@ -95,7 +149,13 @@ public class HGUCoursePatternAnalyzer {
 	private boolean courseExist(Course[] courses, Course course) {
 		
 		// TODO: implement this method
-
+		int i = 0;
+		
+		for(i = 0; i < courses.length; i++) {
+			if(courses[i].getCourseName().equals(course.getCourseName())) {
+				return true;
+			}
+		}
 		return false;
 	}
 
