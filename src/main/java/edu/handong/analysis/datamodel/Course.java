@@ -2,15 +2,15 @@ package edu.handong.analysis.datamodel;
 
 public class Course {
 	
-	private String courseName;
+	private String name;
 	
 	public Course(String name){
-		courseName = name;
+		this.name = name;
 	}
 	
 	public String getCourseName() {
 		
-		return courseName;
+		return name;
 	}
 
 }
